@@ -1,0 +1,15 @@
+import boto3
+def lambda_handler(event,context):
+ s3 = boto3.client('s3')
+ response = s3.list_buckets()
+ s3_resourece = boto3.client('s3')
+ print('Existing buckets:')
+ s3_resourece = boto3.client('s3')
+ for bucket in response['Buckets']:
+     print(f'  {bucket["Name"]}')
+ objects = s3_resourece.list_objects(Bucket=f'{bucket["Name"]}')["Contents"]
+ len(objects)
+ if len(objects)>0:
+    print("objects exists")
+    for object in objects:
+        print(object)
